@@ -3,10 +3,9 @@
 
 In this personal project, I used the AWS SDK (Python boto3) to automate the deployment of a 3-tier web application on AWS. The aim of this project is to explore the boto3 library for Iac and also develop templates for AWS resource automation for test and production environments, so feel free to modify and use this code for test and production 🙂.
 
-
 The project template creates a VPC with a load balancer targeting an autoscaling group of EC2 instances in different availability zones. The EC2 instances serving the web application communicate with Amazon S3 and DynamoDB.
 
-
+![](architecture.png)
 
 
 How to use:
