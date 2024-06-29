@@ -35,7 +35,8 @@ ec2_params={
     'instance_type':'t2.micro',
     'instance_name':'employee-app',
     'launch_template_name':'app-template',
-    'scaling_group_name':'app-autoscalinggroup'
+    'scaling_group_name':'app-autoscalinggroup',
+    'policy_name':'alb1000-target-tracking-scaling-policy'
 }
 
 

@@ -20,8 +20,8 @@ cd into the cloned directory and run the following python scripts
 - Attach DynamoDB and S3 managed service policies to the created IAM role.
 - Create DynamoDb Table and S3 Bucket that the EC2 instance will be connected to.
 
+2. python bucket_policy.py
 
-2. python buckt_policy.py
 - Add instance profile the to the role
 - Set bucket policy for the S3 bucket, to allow the role to access the S3 bucket.
 
@@ -34,7 +34,7 @@ cd into the cloned directory and run the following python scripts
 - Create a route table
 - Create subnets in two different availability zones
 - Associate route table to the subnets
-- Create security groups for instance and for a load balancer.
+- Create security groups for instances and for a load balancer.
 - Launch EC2 instance (Ubuntu 22.04 LTS) in one availability zone
 
 

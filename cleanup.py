@@ -163,18 +163,21 @@ def delete_target_group(elb, tg_name):
     elb.delete_target_group(TargetGroupArn=tg_arn)
     print('--- load balancer target group deleted ---')
 
+def describe_policy_name(asc, auto_scaling_group_name):
+    response = asc.describe_policies(AutoScalingGroupName=auto_scaling_group_name)
+    pn = response#['ScalingPolicies']#[0]['PolicyName']
+    return pn
+
 def remove_auto_scaling_policy(asc, auto_scaling_group_name, policy_name):
     response = asc.delete_policy(
     AutoScalingGroupName=auto_scaling_group_name,
     PolicyName=policy_name
     )
 
-def delete_autoscaling_group(asc, group_name):
-    des_asc = asc.describe_auto_scaling_groups(
-    AutoScalingGroupNames=group_name
-    )
-    autoscaling_policy_arn = des_asc['AutoScalingGroups'][0]['AutoScalingGroupARN']
-    remove_auto_scaling_policy(asc, group_name, autoscaling_policy_arn)
+def delete_autoscaling_group(asc, group_name, policy_name):
+    #des_asc = asc.describe_auto_scaling_groups(AutoScalingGroupNames=[group_name,] )
+    #autoscaling_policy_arn = des_asc['AutoScalingGroups'][0]['AutoScalingGroupARN']
+    remove_auto_scaling_policy(asc, group_name, policy_name)
     response = asc.delete_auto_scaling_group(
     AutoScalingGroupName=group_name,
     ForceDelete=True
@@ -192,10 +195,11 @@ ec2_id = ec2.instances.filter()
 instance_ids= [x.id for x in ec2_id]
 instance_id =instance_ids[0]
 
-#TODO make delay before deleting target group
-remove_auto_scaling_policy(asc, ec2_params['scaling_group_name'])
+#policy_name = describe_policy_name(asc, ec2_params['scaling_group_name'])
+#remove_auto_scaling_policy(asc, ec2_params['scaling_group_name'], ec2_params['policy_name'])
+
 #delete autoscaling group
-delete_autoscaling_group(asc, ec2_params['scaling_group_name'])
+delete_autoscaling_group(asc, ec2_params['scaling_group_name'], ec2_params['policy_name'])
 
 #delete launch template
 delete_launch_template(ec2_temp, ec2_params['launch_template_name'])

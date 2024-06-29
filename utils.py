@@ -431,7 +431,7 @@ def auto_scaling_group(autoScaling_client, autoscaling_group_name, template_id,
 
 # Put policy
 def auto_scaling_policy(autoScaling_client, autoscaling_group_name):
-    """attache policy to the auto scaling group
+    """attach policy to the auto scaling group
 
     Args:
         autoScaling_client (object)
