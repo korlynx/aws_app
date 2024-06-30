@@ -1,7 +1,7 @@
 <h2 align="center">EC2 autoscaling with boto3</h2>
 
 
-In this personal project, I used the AWS SDK (Python boto3) to automate the deployment of a 3-tier web application on AWS. The aim of this project is to explore the boto3 library for Iac and also develop templates for AWS resource automation for test and production environments, so feel free to modify and use this code for test and production 🙂.
+In this personal project, I used the AWS SDK (Python boto3) to automate the deployment of a 2-tier web application on AWS. The aim of this project is to explore the boto3 library for Iac and also develop templates for AWS resource automation for test and production environments, so feel free to modify and use this code for test and production 🙂.
 
 The project template creates a VPC with a load balancer targeting an autoscaling group of EC2 instances in different availability zones. The EC2 instances serving the web application communicate with Amazon S3 and DynamoDB.
 
@@ -13,20 +13,20 @@ How to use:
 cd into the cloned directory and run the following python scripts
 
 
-1.  python create_db_s3.py
+1.  python create_role_db_s3.py
 
 
 - Create IAM service role, this will allow AWS services such as EC2 to perform action on your behalf.
 - Attach DynamoDB and S3 managed service policies to the created IAM role.
 - Create DynamoDb Table and S3 Bucket that the EC2 instance will be connected to.
 
-2. python bucket_policy.py
+2. python s3_bucket_policy.py
 
 - Add instance profile the to the role
 - Set bucket policy for the S3 bucket, to allow the role to access the S3 bucket.
 
 
-3. python launch_vpc_ec2.py
+3. python create_vpc_network_ec2.py
 
 
 - Create a VPC
