@@ -85,3 +85,19 @@ export AWS_DEFAULT_REGION=eu-central-1
 export DYNAMO_MODE=on
 FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 """).decode("ascii")
+
+
+
+#!/bin/bash -ex
+# apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install python3-pip
+# apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install unzip
+# git clone https://github.com/korlynx/aws_app.git
+# cd aws_app/
+# unzip FlaskApp.zip
+# cd FlaskApp/
+# pip install -r requirements.txt --break-system-packages
+# DEBIAN_FRONTEND=noninteractive apt-get -y install stress 
+# export PHOTOS_BUCKET=" "
+# export AWS_DEFAULT_REGION=eu-central-1
+# export DYNAMO_MODE=on
+# FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=8080

@@ -10,24 +10,41 @@ The project template creates a VPC with a load balancer targeting an autoscaling
 
 How to use:
 -----------
-cd into the cloned directory and run the following python scripts
+cd into the cloned directory and run the make command below.
+
+```sh
+make all
+```
+## Clean up
+
+```sh
+make clean
+
+```
+Alternatively you can run individual python script as follow:
 
 
-1.  python create_role_db_s3.py
-
+1.  
+```sh
+python create_role_db_s3.py
+```
 
 - Create IAM service role, this will allow AWS services such as EC2 to perform action on your behalf.
 - Attach DynamoDB and S3 managed service policies to the created IAM role.
 - Create DynamoDb Table and S3 Bucket that the EC2 instance will be connected to.
 
-2. python s3_bucket_policy.py
-
+2. 
+```sh
+python s3_bucket_policy.py
+```
 - Add instance profile the to the role
 - Set bucket policy for the S3 bucket, to allow the role to access the S3 bucket.
 
 
-3. python create_vpc_network_ec2.py
-
+3. 
+```sh
+python create_vpc_network_ec2.py
+```
 
 - Create a VPC
 - Create an Internet gateway and attach it to the VPC.
@@ -41,8 +58,10 @@ cd into the cloned directory and run the following python scripts
 > _NOTE:_  To see if the above set-up (1 - 3) is working as expected, copy the instance public IP and paste it on a browser. The home page of the web app should be rendered
 
 
-4. python create_load_balancer.py
-
+4. 
+```sh
+python create_load_balancer.py
+```
 
 - Create a target group
 - Register target group
@@ -50,7 +69,11 @@ cd into the cloned directory and run the following python scripts
 - Configure load balancer listener
 
 
-5. python create_auto_scaling_group.py
+5. 
+```sh
+python create_auto_scaling_group.py
+```
+
 - Create auto scaling group
 - Add a scaling policy to the auto scaling group
 
@@ -58,7 +81,10 @@ cd into the cloned directory and run the following python scripts
 >  _NOTE:_  After creating the load balancer and Auto scaling group, copy the DNS of the load balancer and paste on the browser to render the application home page.
 
 
-6. python cleanup.py
+6. 
+```sh
+python cleanup.py
+```
 - Delete and remove all created AWS services
 
 
